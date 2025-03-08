@@ -140,7 +140,10 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.chiu.naishuawangnextbackend.NaishuawangNextBackendApplication</mainClass>
-                    <skip>true</skip>
+<!--                    打包的时候把这个取消掉就可以把本地包给打包进去  -->
+                    <includeSystemScope>true</includeSystemScope>
+                    <!--                打包的时候注释掉这里                     -->
+<!--                    <skip>true</skip>-->
                 </configuration>
                 <executions>
                     <execution>

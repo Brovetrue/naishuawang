@@ -3,14 +3,36 @@ version: '3'
 
 services:
 
-
-    frpc:
-        image: stilleshan/frpc:0.60.0
-        container_name: frpc
+    frontend:
+        image: naishuawang-next-frontend-0.1.0
+        container_name: naishuawang-next-frontend-0.1.0
+        ports:
+            -  3000:3000
         deploy:
             resources:
                 limits:
-                    memory: 32MB
+                    memory: 160MB
+        depends_on:
+            -   backend
+
+    backend:
+        image: naishuawang-next-backend
+        container_name: naishuawang-next-backend
+        build: .
+        volumes:
+            - /usr/src/naishuawang/naishuawang-next-backend
+        ports:
+            - 8123:8123
+        deploy:
+            resources:
+                limits:
+                    memory: 432MB
+        depends_on:
+            -  dashboard
+
+    frpc:
+        image: stilleshan/frpc
+        container_name: frpc
 
     elasticsearch:
         image: elasticsearch:7.17.23
@@ -68,32 +90,9 @@ services:
         depends_on:
             -  worker
 
-    backend:
-        image: naishuawang-next-backend-0.0.1
-        container_name: naishuawang-next-backend
-        build: .
-        volumes:
-            - /usr/src/naishuawang/naishuawang-next-backend
-        ports:
-            - 8123:8123
-        deploy:
-            resources:
-                limits:
-                    memory: 432MB
-        depends_on:
-            -  dashboard
 
-    frontend:
-        image: naishuawang-next-frontend-0.1.0
-        container_name: naishuawang-next-frontend-0.1.0
-        ports:
-            -  3000:3000
-        deploy:
-            resources:
-                limits:
-                    memory: 160MB
-        depends_on:
-            -   backend
+
+
 
 
 

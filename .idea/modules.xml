@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/naishuawang.iml" filepath="$PROJECT_DIR$/naishuawang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/naishuawang-next-backend/naishuawang-next-backend.iml" filepath="$PROJECT_DIR$/naishuawang-next-backend/naishuawang-next-backend.iml" />
     </modules>
   </component>
 </project>
